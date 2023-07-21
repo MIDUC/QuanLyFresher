@@ -54,7 +54,6 @@ public class CenterService {
         return true;
     } // được nhưng hơi mất time
 
-
     public List<FresherOfCenter> countFresher(int id){
         List<FresherOfCenter> fresherOfCenters = entityManager.createNativeQuery("SELECT * FROM fresher_of_center WHERE center_id = " + id , FresherOfCenter.class).getResultList();
         return fresherOfCenters;
