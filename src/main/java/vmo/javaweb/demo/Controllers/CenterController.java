@@ -35,7 +35,7 @@ public class CenterController {
                 centerService.addToTheCenter(fresherOfCenter);
                 mess = "Đã thêm fresher " +
                         fresherService.fillById(fresherOfCenter.getFresher_id()).getName()
-                        + " vào trung tâm" + centerService.fillById(fresherOfCenter.getCenter_id());
+                        + " vào trung tâm " + centerService.fillById(fresherOfCenter.getCenter_id()).getName();
             }
         }
         return mess;
