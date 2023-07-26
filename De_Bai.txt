@@ -1,0 +1,26 @@
+- Quản lý Fresher
+    - View Số Lượng Fresher
+    - Thêm Fresher mới
+    - Xóa Fresher cũ
+    - Thay đổi Thông tin Fresher
+    - Tính Điểm cho từng fresher theo các bài tập lớn (3 bài  - bài 1 bài 2 bài 3 ) điểm số cuối cùng tính bằng cách cộng trung bình
+    - Tìm fresher theo tên, theo ngôn ngữ lập trình, theo email,
+- Quản Lý các Trung tâm trong cây
+    - Xem tất cả các trung tâm
+    - Tạo mới Trung tâm
+    -  Xóa Trung tâm
+    - Update trung tâm
+    - Đưa fresher vào trung tâm
+- Dashboard
+    - Thống kê số lượng fresher theo từng trung tâm
+    - Thống kê số lượng fresher theo điểm số
+
+Yêu cầu:
+- Sử dụng Java 16
+- Sử dụng Spring boot Spring JPA
+- Dùng postman để gọi API ko cần code giao diện
+- Có token Authentication (bearer) : làm authen xong add token vào
+- Dùng Controller Advice để xử lý exception
+- Sử dụng PostgreSQL(my SQL)
+- Apply Swagger : quản lý các api code . Thêm vào file pom
+	< openAPI >

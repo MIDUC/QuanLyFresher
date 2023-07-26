@@ -1,4 +1,4 @@
-package vmo.javaweb.demo.Models;
+package vmo.javaweb.demo.models.entity;
 
 import jakarta.persistence.*;
 

@@ -1,9 +1,9 @@
-package vmo.javaweb.demo.Controllers;
+package vmo.javaweb.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import vmo.javaweb.demo.Models.Assignment;
-import vmo.javaweb.demo.Services.AssignmentService;
+import vmo.javaweb.demo.models.entity.Assignment;
+import vmo.javaweb.demo.services.AssignmentService;
 
 @RestController
 public class AssignmentController {

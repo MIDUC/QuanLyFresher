@@ -1,9 +1,9 @@
-package vmo.javaweb.demo.Services;
+package vmo.javaweb.demo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vmo.javaweb.demo.Models.Language;
-import vmo.javaweb.demo.Repositories.LanguageRepo;
+import vmo.javaweb.demo.models.entity.Language;
+import vmo.javaweb.demo.repositories.LanguageRepo;
 
 @Service
 public class LanguageService {

@@ -1,14 +1,11 @@
-package vmo.javaweb.demo.Controllers;
+package vmo.javaweb.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import vmo.javaweb.demo.Models.Center;
-import vmo.javaweb.demo.Models.Fresher;
-import vmo.javaweb.demo.Models.FresherOfCenter;
-import vmo.javaweb.demo.Models.Language;
-import vmo.javaweb.demo.Services.CenterService;
-import vmo.javaweb.demo.Services.FresherService;
-import vmo.javaweb.demo.Services.LanguageService;
+import vmo.javaweb.demo.models.entity.Center;
+import vmo.javaweb.demo.models.entity.FresherOfCenter;
+import vmo.javaweb.demo.services.CenterService;
+import vmo.javaweb.demo.services.FresherService;
 
 import java.util.List;
 

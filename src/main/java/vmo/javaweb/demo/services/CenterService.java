@@ -1,15 +1,15 @@
-package vmo.javaweb.demo.Services;
+package vmo.javaweb.demo.services;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vmo.javaweb.demo.Models.Center;
-import vmo.javaweb.demo.Models.Fresher;
-import vmo.javaweb.demo.Models.FresherOfCenter;
-import vmo.javaweb.demo.Repositories.CenterRepo;
-import vmo.javaweb.demo.Repositories.FresherOfCenterRepo;
-import vmo.javaweb.demo.Repositories.FresherRepo;
+import vmo.javaweb.demo.exception_handler.exceptions.CenterNotFound;
+import vmo.javaweb.demo.models.entity.Center;
+import vmo.javaweb.demo.models.entity.FresherOfCenter;
+import vmo.javaweb.demo.repositories.CenterRepo;
+import vmo.javaweb.demo.repositories.FresherOfCenterRepo;
+import vmo.javaweb.demo.repositories.FresherRepo;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class CenterService {
         return centerRepo.findAll();
     }
     public Center fillById(int id){
-        return entityManager.find(Center.class,id);
+        return centerRepo.findById(id).orElseThrow(()->new CenterNotFound("center not found with id : " + id));
     }
 
     public Center add_center(Center center){

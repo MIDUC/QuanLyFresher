@@ -1,12 +1,12 @@
-package vmo.javaweb.demo.Services;
+package vmo.javaweb.demo.services;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vmo.javaweb.demo.Models.Assignment;
-import vmo.javaweb.demo.Repositories.AssignmentRepo;
+import vmo.javaweb.demo.models.entity.Assignment;
+import vmo.javaweb.demo.repositories.AssignmentRepo;
 
 import java.util.List;
 

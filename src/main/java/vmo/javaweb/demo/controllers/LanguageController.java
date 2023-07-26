@@ -1,17 +1,12 @@
-package vmo.javaweb.demo.Controllers;
+package vmo.javaweb.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import vmo.javaweb.demo.Models.Fresher;
-import vmo.javaweb.demo.Models.Language;
-import vmo.javaweb.demo.Repositories.FresherRepo;
-import vmo.javaweb.demo.Repositories.LanguageRepo;
-import vmo.javaweb.demo.Services.FresherService;
-import vmo.javaweb.demo.Services.LanguageService;
-
-import java.util.List;
+import vmo.javaweb.demo.models.entity.Language;
+import vmo.javaweb.demo.services.FresherService;
+import vmo.javaweb.demo.services.LanguageService;
 
 @RestController
 public class LanguageController {

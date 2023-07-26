@@ -1,14 +1,14 @@
-package vmo.javaweb.demo.Services;
+package vmo.javaweb.demo.services;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vmo.javaweb.demo.Models.Assignment;
-import vmo.javaweb.demo.Models.Fresher;
-import vmo.javaweb.demo.Models.Language;
-import vmo.javaweb.demo.Repositories.FresherRepo;
+import vmo.javaweb.demo.models.entity.Assignment;
+import vmo.javaweb.demo.models.entity.Fresher;
+import vmo.javaweb.demo.models.entity.Language;
+import vmo.javaweb.demo.repositories.FresherRepo;
 
 import java.util.List;
 
