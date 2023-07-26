@@ -65,6 +65,9 @@ public class CenterController {
         }
         return mess;
     }
-
+    @GetMapping("/{id}")
+    public Center FindOne(@PathVariable int id){
+        return centerService.fillById(id);
+    }
 
 }

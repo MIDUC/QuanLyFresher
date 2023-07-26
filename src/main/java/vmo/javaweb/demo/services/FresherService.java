@@ -5,6 +5,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import vmo.javaweb.demo.exception_handler.exceptions.ServiceNotFound;
 import vmo.javaweb.demo.models.entity.Assignment;
 import vmo.javaweb.demo.models.entity.Fresher;
 import vmo.javaweb.demo.models.entity.Language;
@@ -24,8 +25,7 @@ public class FresherService {
     }
 
     public Fresher fillById(int id){
-        Fresher fresher = entityManager.find(Fresher.class,id);
-        return fresher;
+        return repo.findById(id).orElseThrow(()-> new ServiceNotFound("fresher not found with id : " + id));
     }
 
     public void save_fresher(Fresher fresher){

@@ -5,6 +5,7 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vmo.javaweb.demo.exception_handler.exceptions.CenterNotFound;
+import vmo.javaweb.demo.exception_handler.exceptions.ServiceNotFound;
 import vmo.javaweb.demo.models.entity.Center;
 import vmo.javaweb.demo.models.entity.FresherOfCenter;
 import vmo.javaweb.demo.repositories.CenterRepo;
@@ -30,7 +31,7 @@ public class CenterService {
         return centerRepo.findAll();
     }
     public Center fillById(int id){
-        return centerRepo.findById(id).orElseThrow(()->new CenterNotFound("center not found with id : " + id));
+        return centerRepo.findById(id).orElseThrow(()->new ServiceNotFound("center not found with id : " + id));
     }
 
     public Center add_center(Center center){
