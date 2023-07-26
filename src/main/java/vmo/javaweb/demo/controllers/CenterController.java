@@ -10,17 +10,19 @@ import vmo.javaweb.demo.services.FresherService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/center")
+@CrossOrigin()
 public class CenterController {
     @Autowired
     CenterService centerService;
     @Autowired
     FresherService fresherService;
 
-    @GetMapping("/admin/centers")
+    @GetMapping("")
     public List<Center> GetAllCenter(){
         return centerService.getAll();
     }
-    @PostMapping("/admin/add_to_the_center")
+    @PostMapping("/add_to_the_center")
     public String Add_Fresher_to_Center(@RequestBody FresherOfCenter fresherOfCenter){
         String mess;
         if(fresherService.fillById(fresherOfCenter.getFresher_id()) == null){
@@ -37,7 +39,7 @@ public class CenterController {
         }
         return mess;
     }
-    @PostMapping("/admin/add_center")
+    @PostMapping("")
     public String Add_fresher(@RequestBody Center center){
         String mess;
         System.out.println("Dang add");
@@ -51,7 +53,7 @@ public class CenterController {
 
         return mess;
     }
-    @DeleteMapping("/admin/delete_center/{id}")
+    @DeleteMapping("/{id}")
     public String Delete_Center(@PathVariable int id){
         String mess;
         Center center = centerService.fillById(id);

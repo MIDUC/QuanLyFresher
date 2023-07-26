@@ -11,37 +11,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/fresher")
 public class FresherController {
     @Autowired
     FresherService service;
-    @GetMapping("/fresher")
+    @GetMapping("")
     public List<Fresher> getAllFresher(){
         return service.fillAll();
     }
 
-    @GetMapping("/count_fresher")
+    @GetMapping("/count")
     public int Count_fresher(){
         List<Fresher> list = service.fillAll();
         return list.size();
     }
-    @GetMapping("/fresher/{id}")
+    @GetMapping("/{id}")
     public Fresher getFresher(@PathVariable int id){
         return service.fillById(id);
     }
 
-    @GetMapping("/info_fresher/{id}")
-    public String getInfo_Fresher(@PathVariable int id){
-        String mess ;
-        Fresher fresher = service.fillById(id);
-        float point = service.AvgPoint(id);
-        List<Assignment> assignmentList = service.AssignmentOfFresher(id);
-        List<Language> languageList = service.languages(id);
-        mess = fresher.toString() + "\n" + languageList.toString() +"\n"+ point + "\n" + assignmentList.toString();
-        return mess;
-    }
+//    @GetMapping("/info_fresher/{id}")
+//    public String getInfo_Fresher(@PathVariable int id){
+//        String mess ;
+//        Fresher fresher = service.fillById(id);
+//        float point = service.AvgPoint(id);
+//        List<Assignment> assignmentList = service.AssignmentOfFresher(id);
+//        List<Language> languageList = service.languages(id);
+//        mess = fresher.toString() + "\n" + languageList.toString() +"\n"+ point + "\n" + assignmentList.toString();
+//        return mess;
+//    }
 
 
-    @PostMapping("/fresher/add_fresher")
+    @PostMapping("")
     public String Add_fresher(@RequestBody Fresher fresher){
         System.out.println("Dang add");
         if(true){
@@ -54,7 +55,7 @@ public class FresherController {
         return mess;
     }
 
-    @PutMapping("/fresher/update/{id}")
+    @PutMapping("/{id}")
     public String Update_fresher(@PathVariable int id , @RequestBody Fresher f){
         Fresher Update_fresher = service.fillById(id);
         Update_fresher.setName(f.getName());
@@ -66,14 +67,14 @@ public class FresherController {
     }
 
 
-    @DeleteMapping("/fresher/delete/{id}")
+    @DeleteMapping("/{id}")
     public String Delete_fresher(@PathVariable int id ){
         String mess = "Xóa fresher " + service.fillAll().get(id).getName() + " thành công";
         service.delete_fresher(id);
         return mess;
     }
 
-    @GetMapping("/fresher/search/{key}")
+    @GetMapping("/search/{key}")
     public List<Fresher> Search_fresher(@PathVariable String key ){
         List<Fresher> list = service.fillAll();
         List<Fresher> list_search = new ArrayList<>() ;
