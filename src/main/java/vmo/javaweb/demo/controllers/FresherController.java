@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/fresher")
+@RequestMapping("fresher") // thêm v1,v2...
 public class FresherController {
     @Autowired
     FresherService service;
@@ -51,8 +51,7 @@ public class FresherController {
         } else {
             service.save_fresher(fresher);
         }
-        String mess = "Thêm fresher " + fresher.getName() + " thành công";
-        return mess;
+        return null;
     }
 
     @PutMapping("/{id}")
@@ -62,16 +61,15 @@ public class FresherController {
         Update_fresher.setGmail(f.getGmail());
         Update_fresher.setStatus(f.getStatus());
         service.save_fresher(Update_fresher);
-        String mess = "Sửa fresher " + Update_fresher.getName() + " thành công";
-        return mess;
+        return null;
     }
 
 
     @DeleteMapping("/{id}")
     public String Delete_fresher(@PathVariable int id ){
-        String mess = "Xóa fresher " + service.fillAll().get(id).getName() + " thành công";
+
         service.delete_fresher(id);
-        return mess;
+        return "Thành công";
     }
 
     @GetMapping("/search/{key}")
@@ -87,28 +85,3 @@ public class FresherController {
     }
 
 }
-
-//{
-//        "id": 1,
-//        "status": 1,
-//        "name": "Doan Minh Duc",
-//        "language": "Java",
-//        "gmail": "Duc1234@gmail.com",
-//        "point": 10.0
-//        },
-//        {
-//        "id": 2,
-//        "status": 0,
-//        "name": "Đoàn Nguyễn B",
-//        "language": "ReactJS",
-//        "gmail": "NguyenB21@gmail.com",
-//        "point": 6.0
-//        },
-//        {
-//        "id": 3,
-//        "status": 0,
-//        "name": "Nguyễn Văn A #",
-//        "language": "ReactJS",
-//        "gmail": "Duc2961@gmail.com",
-//        "point": 5.0
-//        }
