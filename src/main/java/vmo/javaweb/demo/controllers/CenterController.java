@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import vmo.javaweb.demo.models.entity.Center;
 import vmo.javaweb.demo.models.entity.FresherOfCenter;
-import vmo.javaweb.demo.services.CenterService;
-import vmo.javaweb.demo.services.FresherService;
+import vmo.javaweb.demo.services.CenterServiceImpl;
+import vmo.javaweb.demo.services.FresherOfCenterServiceImpl;
+import vmo.javaweb.demo.services.FresherServiceImpl;
 
 import java.util.List;
 
@@ -14,27 +15,29 @@ import java.util.List;
 @CrossOrigin()
 public class CenterController {
     @Autowired
-    CenterService centerService;
+    CenterServiceImpl centerService;
     @Autowired
-    FresherService fresherService;
+    FresherServiceImpl fresherService;
+    @Autowired
+    FresherOfCenterServiceImpl fresherOfCenterService;
 
     @GetMapping("")
     public List<Center> GetAllCenter(){
-        return centerService.getAll();
+        return centerService.findAll();
     }
-    @PostMapping("/add_to_the_center")
-    public String Add_Fresher_to_Center(@RequestBody FresherOfCenter fresherOfCenter){
-        String mess;
-        if(fresherService.fillById(fresherOfCenter.getFresher_id()) == null){
-            mess = "Fresher không tồn tại !!! ";
+    @PostMapping("/fresher")
+    public String AddFresherToCenter(@RequestBody FresherOfCenter fresherOfCenter){
+        String mess = "No successful";
+        if(fresherService.findById(fresherOfCenter.getFresher_id()) == null){
+
         } else {
-            if(centerService.fillById(fresherOfCenter.getCenter_id()) == null){
-                mess = "Trung tâm không tồn tại !!! ";
+            if(centerService.findById(fresherOfCenter.getCenter_id()) == null){
+
             }else {
-                centerService.addToTheCenter(fresherOfCenter);
+                fresherOfCenterService.save(fresherOfCenter);
                 mess = "Đã thêm fresher " +
-                        fresherService.fillById(fresherOfCenter.getFresher_id()).getName()
-                        + " vào trung tâm " + centerService.fillById(fresherOfCenter.getCenter_id()).getName();
+                        fresherService.findById(fresherOfCenter.getFresher_id()).getName()
+                        + " vào trung tâm " + centerService.findById(fresherOfCenter.getCenter_id()).getName();
             }
         }
         return mess;
@@ -42,10 +45,8 @@ public class CenterController {
     @PostMapping("")
     public String Add_fresher(@RequestBody Center center){
         String mess;
-        System.out.println("Dang add");
         if(centerService.checkByName(center.getName()) == true){
-            centerService.add_center(center);
-            System.out.println("Add thanh cong");
+            centerService.save(center);
             mess = "Thêm trung tâm " + center.getName() + " thành công";
         } else {
             mess = "Trung tâm đã tồn tại";
@@ -56,10 +57,9 @@ public class CenterController {
     @DeleteMapping("/{id}")
     public String Delete_Center(@PathVariable int id){
         String mess;
-        Center center = centerService.fillById(id);
-        if(center != null){
-            centerService.delete_center(center);
-            mess = "Đã xóa trung tâm " + center.getName();
+        if(centerService.findById(id) != null){
+            centerService.deleteById(id);
+            mess = "Đã xóa trung tâm ";
         } else {
             mess = "Trung tâm không tồn tại";
         }
@@ -67,7 +67,7 @@ public class CenterController {
     }
     @GetMapping("/{id}")
     public Center FindOne(@PathVariable int id){
-        return centerService.fillById(id);
+        return centerService.findById(id);
     }
 
 }
