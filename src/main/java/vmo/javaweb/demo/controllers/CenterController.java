@@ -28,18 +28,10 @@ public class CenterController {
     @PostMapping("/fresher")
     public String AddFresherToCenter(@RequestBody FresherOfCenter fresherOfCenter){
         String mess = "No successful";
-        if(fresherService.findById(fresherOfCenter.getFresher_id()) == null){
-
-        } else {
-            if(centerService.findById(fresherOfCenter.getCenter_id()) == null){
-
-            }else {
-                fresherOfCenterService.save(fresherOfCenter);
-                mess = "Đã thêm fresher " +
-                        fresherService.findById(fresherOfCenter.getFresher_id()).getName()
-                        + " vào trung tâm " + centerService.findById(fresherOfCenter.getCenter_id()).getName();
-            }
-        }
+        fresherOfCenterService.save(fresherOfCenter);
+        mess = "Đã thêm fresher " +
+                fresherService.findById(fresherOfCenter.getFresher_id()).getName()
+                + " vào trung tâm " + centerService.findById(fresherOfCenter.getCenter_id()).getName();
         return mess;
     }
     @PostMapping("")

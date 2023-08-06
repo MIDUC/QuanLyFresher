@@ -11,9 +11,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
-import vmo.javaweb.demo.models.jwt.JWTHelper;
-import vmo.javaweb.demo.models.jwt.JwtRequest;
-import vmo.javaweb.demo.models.jwt.JwtResponse;
+import vmo.javaweb.demo.jwt.JWTHelper;
+import vmo.javaweb.demo.jwt.JwtRequest;
+import vmo.javaweb.demo.jwt.JwtResponse;
 
 
 
@@ -30,7 +30,7 @@ public class AuthController {
     @Autowired
     private JWTHelper helper;
 
-    private Logger logger = LoggerFactory.getLogger(AuthController.class);
+    private final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
 
     @PostMapping("/login")

@@ -7,8 +7,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import vmo.javaweb.demo.models.jwt.JwtAuthenticationEntryPoint;
-import vmo.javaweb.demo.models.jwt.JwtAuthenticationFilter;
+import vmo.javaweb.demo.jwt.JwtAuthenticationEntryPoint;
+import vmo.javaweb.demo.jwt.JwtAuthenticationFilter;
 
 @Configuration
 public class SecurityConfig {
@@ -23,7 +23,7 @@ public class SecurityConfig {
         .csrf(csrf -> csrf.disable()).cors(cors -> cors.disable())
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/api/**")
                         .hasRole("ADMIN")
-                        .requestMatchers("/auth/login","/fresher/**")
+                        .requestMatchers("/auth/login")
                         .permitAll()
                         .requestMatchers(AUTH_WHITELIST).permitAll()
                         .anyRequest().authenticated())
@@ -36,9 +36,9 @@ public class SecurityConfig {
     private static final String[] AUTH_WHITELIST = {
         "/api/v1/auth/**",
         "/swagger-ui/**",
-            "/v3/api-docs/**",
-            "/v3/api-docs.yml",
-            "/swagger-ui.html"
+        "/v3/api-docs/**",
+        "/v3/api-docs.yml",
+        "/swagger-ui.html"
     };
 
 }

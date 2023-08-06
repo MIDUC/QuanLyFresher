@@ -71,7 +71,6 @@ public class FresherServiceImpl implements IBaseService<Fresher> {
     }
 
     public List<Assignment> AssignmentOfFresher (int fresher_id){
-        Table tbl = Assignment.class.getAnnotation(Table.class);
         List<Assignment> list = entityManager.createNativeQuery("SELECT * FROM assignment WHERE fresher_id = " + fresher_id ,Assignment.class).getResultList();
         return list;
     }

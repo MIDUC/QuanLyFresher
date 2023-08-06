@@ -1,4 +1,4 @@
-package vmo.javaweb.demo.models.jwt;
+package vmo.javaweb.demo.jwt;
 
 import lombok.*;
 

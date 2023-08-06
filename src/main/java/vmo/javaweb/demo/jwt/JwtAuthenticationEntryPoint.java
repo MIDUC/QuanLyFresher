@@ -1,4 +1,4 @@
-package vmo.javaweb.demo.models.jwt;
+package vmo.javaweb.demo.jwt;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

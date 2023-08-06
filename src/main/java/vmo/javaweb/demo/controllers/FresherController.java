@@ -30,13 +30,7 @@ public class FresherController {
 
     @PostMapping("")
     public String Add_fresher(@RequestBody Fresher fresher){
-        System.out.println("Dang add");
-        if(true){
-            service.save(fresher);
-            System.out.println("Add thanh cong");
-        } else {
-            service.save(fresher);
-        }
+        service.save(fresher);
         return null;
     }
 
