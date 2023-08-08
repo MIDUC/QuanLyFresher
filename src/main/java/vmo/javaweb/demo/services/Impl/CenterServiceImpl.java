@@ -1,27 +1,22 @@
-package vmo.javaweb.demo.services;
+package vmo.javaweb.demo.services.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vmo.javaweb.demo.base.IBaseService;
 import vmo.javaweb.demo.exception_handler.exceptions.ServiceNotFound;
 import vmo.javaweb.demo.models.entity.Center;
 import vmo.javaweb.demo.repositories.CenterRepo;
+import vmo.javaweb.demo.services.IServices.CenterService;
 
 import java.util.List;
 
 @Service
-public class CenterServiceImpl implements IBaseService<Center> {
+public class CenterServiceImpl implements CenterService {
     @Autowired
     private CenterRepo centerRepo;
 
     @Override
-    public Center save(Center model) {
-        return centerRepo.save(model);
-    }
-
-    @Override
-    public void save(List<Center> models) {
-
+    public void save(Center model) {
+        centerRepo.save(model);
     }
 
     @Override
@@ -29,10 +24,6 @@ public class CenterServiceImpl implements IBaseService<Center> {
         centerRepo.deleteById(id);
     }
 
-    @Override
-    public void deleteByIds(String ids) {
-
-    }
 
     @Override
     public void update(Integer id, Center model) {
@@ -47,16 +38,6 @@ public class CenterServiceImpl implements IBaseService<Center> {
     @Override
     public Center findById(Integer id) {
         return centerRepo.findById(id).orElseThrow(()-> new ServiceNotFound("center not found with id : " + id));
-    }
-
-    @Override
-    public Center findBy(String fieldName, Object value) {
-        return null;
-    }
-
-    @Override
-    public List<Center> findByIds(String ids) {
-        return null;
     }
 
     @Override

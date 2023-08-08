@@ -3,13 +3,13 @@ package vmo.javaweb.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import vmo.javaweb.demo.models.entity.Assignment;
-import vmo.javaweb.demo.services.AssignmentServiceImpl;
+import vmo.javaweb.demo.services.IServices.AssignmentService;
 
 @RestController
-@RequestMapping("api/assignment")
+@RequestMapping("api/assignments")
 public class AssignmentController {
     @Autowired
-    AssignmentServiceImpl assignmentService;
+    AssignmentService assignmentService;
     @PostMapping("")
     public String Add_Assignment(@RequestBody Assignment assignment){
         String mess;

@@ -4,22 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import vmo.javaweb.demo.models.entity.Center;
 import vmo.javaweb.demo.models.entity.FresherOfCenter;
-import vmo.javaweb.demo.services.CenterServiceImpl;
-import vmo.javaweb.demo.services.FresherOfCenterServiceImpl;
-import vmo.javaweb.demo.services.FresherServiceImpl;
-
+import vmo.javaweb.demo.services.IServices.CenterService;
+import vmo.javaweb.demo.services.IServices.FresherOfCenterService;
+import vmo.javaweb.demo.services.IServices.FresherService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/center")
+@RequestMapping("/api/centers")
 @CrossOrigin()
 public class CenterController {
     @Autowired
-    CenterServiceImpl centerService;
+    CenterService centerService;
     @Autowired
-    FresherServiceImpl fresherService;
+    FresherService fresherService;
     @Autowired
-    FresherOfCenterServiceImpl fresherOfCenterService;
+    FresherOfCenterService fresherOfCenterService;
 
     @GetMapping("")
     public List<Center> GetAllCenter(){
@@ -35,7 +34,7 @@ public class CenterController {
         return mess;
     }
     @PostMapping("")
-    public String Add_fresher(@RequestBody Center center){
+    public String Add_Center(@RequestBody Center center){
         String mess;
         if(centerService.checkByName(center.getName()) == true){
             centerService.save(center);
