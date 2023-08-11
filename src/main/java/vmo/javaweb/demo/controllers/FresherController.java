@@ -1,5 +1,6 @@
 package vmo.javaweb.demo.controllers;
 
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import vmo.javaweb.demo.models.entity.Fresher;
@@ -45,20 +46,20 @@ public class FresherController {
         return "Thành công";
     }
 
-    @GetMapping("/name/{key}")
-    public List<Fresher> SearchByName(@PathVariable String key ){
-        List<Fresher> list_search = fresherService.findByName(key);
+    @GetMapping("/search/name")
+    public List<Fresher> SearchByName(@RequestParam(name = "name") String name  ){
+        List<Fresher> list_search = fresherService.findByName(name);
         return list_search;
     }
 
-    @GetMapping("/gmail/{key}")
-    public List<Fresher> SearchByGmail(@PathVariable String key ){
-        List<Fresher> list_search = fresherService.findByEmail(key);
+    @GetMapping("/search/gmail")
+    public List<Fresher> SearchByGmail(@RequestParam(name = "gmail") String gmail  ){
+        List<Fresher> list_search = fresherService.findByEmail(gmail);
         return list_search;
     }
-    @GetMapping("/language/{key}")
-    public List<Fresher> SearchByLanguage(@PathVariable String key ){
-        List<Fresher> list_search = fresherService.findByLanguage(key);
+    @GetMapping("/search/language")
+    public List<Fresher> SearchByLanguage(@RequestParam(name = "language") String language){
+        List<Fresher> list_search = fresherService.findByLanguage(language);
         return list_search;
     }
 

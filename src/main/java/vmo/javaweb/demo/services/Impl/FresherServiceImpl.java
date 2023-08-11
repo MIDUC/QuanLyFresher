@@ -85,13 +85,17 @@ public class FresherServiceImpl implements FresherService {
 
     @Override
     public List<Fresher> findByName(String name) {
-        List<Fresher> fresherList = entityManager.createNativeQuery("SELECT * FROM fresher f WHERE f.name like \"%"+ name +"%\"", Fresher.class).getResultList();
+        List<Fresher> fresherList = entityManager
+                .createNativeQuery("SELECT * FROM fresher f WHERE f.name like \"%"+ name +"%\"", Fresher.class)
+                .getResultList();
         return fresherList;
     }
 
     @Override
     public List<Fresher> findByEmail(String email) {
-        List<Fresher> fresherList = entityManager.createNativeQuery("SELECT * FROM fresher f WHERE f.gmail like \"%"+ email +"%\"",Fresher.class).getResultList();
+        List<Fresher> fresherList = entityManager
+                .createNativeQuery("SELECT * FROM fresher f WHERE f.gmail like \"%"+ email +"%\"",Fresher.class)
+                .getResultList();
         return fresherList;
     }
 
