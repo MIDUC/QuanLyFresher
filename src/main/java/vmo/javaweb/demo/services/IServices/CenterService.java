@@ -1,6 +1,7 @@
 package vmo.javaweb.demo.services.IServices;
 
 import vmo.javaweb.demo.models.entity.Center;
+import vmo.javaweb.demo.models.entity.Fresher;
 
 import java.util.List;
 
@@ -11,4 +12,6 @@ public interface CenterService {
     public abstract List<Center> findAll();
     public abstract Boolean checkByName(String name);
     public abstract Center findById(Integer id);
+    public abstract List<Integer> findByIdFresher(Integer id);
+    public abstract List<Integer> findFresherById(Integer id);
 }

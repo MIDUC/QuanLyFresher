@@ -1,5 +1,6 @@
 package vmo.javaweb.demo.services.IServices;
 
+import vmo.javaweb.demo.models.dto.FresherDto;
 import vmo.javaweb.demo.models.entity.Assignment;
 import vmo.javaweb.demo.models.entity.Fresher;
 import vmo.javaweb.demo.models.entity.Language;
@@ -18,6 +19,8 @@ public interface FresherService {
     public abstract List<Language> languages (Integer id);
     public abstract List<Fresher> findByName(String name);
     public abstract List<Fresher> findByEmail(String email);
+    public abstract List<Integer> findCentersById(Integer id);
     public abstract List<Fresher> findByLanguage(String language);
+    public abstract FresherDto findDtoById(Integer id);
 
 }

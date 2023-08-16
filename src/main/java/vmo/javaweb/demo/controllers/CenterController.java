@@ -3,10 +3,13 @@ package vmo.javaweb.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import vmo.javaweb.demo.models.entity.Center;
+import vmo.javaweb.demo.models.entity.Fresher;
 import vmo.javaweb.demo.models.entity.FresherOfCenter;
 import vmo.javaweb.demo.services.IServices.CenterService;
 import vmo.javaweb.demo.services.IServices.FresherOfCenterService;
 import vmo.javaweb.demo.services.IServices.FresherService;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -60,5 +63,13 @@ public class CenterController {
     public Center FindOne(@PathVariable int id){
         return centerService.findById(id);
     }
-
+    @GetMapping("/thongke/{id}")
+    public List<Fresher> Statistical_Fresher(@PathVariable int id){
+        List<Fresher> fresherList = new ArrayList<>();
+        List<Integer> ids = centerService.findFresherById(id);
+        for (int i : ids){
+            fresherList.add(fresherService.findById(i));
+        }
+        return fresherList;
+    }
 }

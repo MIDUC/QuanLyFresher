@@ -3,6 +3,7 @@ package vmo.javaweb.demo.controllers;
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import vmo.javaweb.demo.models.dto.FresherDto;
 import vmo.javaweb.demo.models.entity.Fresher;
 import vmo.javaweb.demo.services.IServices.FresherService;
 import java.util.List;
@@ -62,5 +63,9 @@ public class FresherController {
         List<Fresher> list_search = fresherService.findByLanguage(language);
         return list_search;
     }
-
+    @GetMapping("/info/{id}")
+    public FresherDto GetFullInfo (@PathVariable Integer id){
+        FresherDto fresherDto = fresherService.findDtoById(id);
+        return fresherDto;
+    }
 }

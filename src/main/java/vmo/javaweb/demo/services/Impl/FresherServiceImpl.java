@@ -5,9 +5,10 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vmo.javaweb.demo.exception_handler.exceptions.ServiceNotFound;
-import vmo.javaweb.demo.models.entity.Assignment;
-import vmo.javaweb.demo.models.entity.Fresher;
-import vmo.javaweb.demo.models.entity.Language;
+import vmo.javaweb.demo.models.dto.FresherDto;
+import vmo.javaweb.demo.models.entity.*;
+import vmo.javaweb.demo.models.mapper.FresherMapper;
+import vmo.javaweb.demo.repositories.CenterRepo;
 import vmo.javaweb.demo.repositories.FresherRepo;
 import vmo.javaweb.demo.services.IServices.FresherService;
 
@@ -17,8 +18,9 @@ import java.util.List;
 @Service
 public class FresherServiceImpl implements FresherService {
     @Autowired
-    FresherRepo fresherRepo;
-
+    private FresherRepo fresherRepo;
+    @Autowired
+    private CenterRepo centerRepo;
     @PersistenceContext
     protected EntityManager entityManager;
 
@@ -43,7 +45,8 @@ public class FresherServiceImpl implements FresherService {
 
     @Override
     public Fresher findById(Integer id) {
-        return fresherRepo.findById(id).orElseThrow(()-> new ServiceNotFound("fresher not found with id : " + id));
+        Fresher fresher = fresherRepo.findById(id).orElseThrow(()-> new ServiceNotFound("fresher not found with id : " + id));
+        return fresher;
     }
     @Override
     public List<Fresher> findAll() {
@@ -100,6 +103,18 @@ public class FresherServiceImpl implements FresherService {
     }
 
     @Override
+    public List<Integer> findCentersById(Integer id) {
+        List<FresherOfCenter> fresherOfCenterList = entityManager
+                .createNativeQuery("SELECT * FROM fresher_of_center WHERE fresher_of_center.center_id = " + id , FresherOfCenter.class)
+                .getResultList();
+        List<Integer> centerIds = new ArrayList<>();
+        for (FresherOfCenter fresherOfCenter : fresherOfCenterList){
+            centerIds.add(fresherOfCenter.getCenter_id());
+        }
+        return centerIds;
+    }
+
+    @Override
     public List<Fresher> findByLanguage(String language) {
         List<Fresher> fresherList = new ArrayList<>();
         List<Fresher> list = findAll();
@@ -116,5 +131,18 @@ public class FresherServiceImpl implements FresherService {
             }
         }
         return fresherList;
+    }
+
+    @Override
+    public FresherDto findDtoById(Integer id) {
+        Fresher fresher = findById(id);
+        List<Integer> centerIds = findCentersById(id);
+        List<Center> centers = new ArrayList<>();
+        for (Integer i : centerIds){
+            centers.add(centerRepo.findById(i).orElseThrow());
+        }
+        List<Language> languages = languages(id);
+        FresherDto fresherDto = FresherMapper.toFresherDto(fresher,centers,languages,AvgPoint(id));
+        return fresherDto;
     }
 }
