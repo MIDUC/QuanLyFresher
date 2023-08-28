@@ -1,5 +1,5 @@
 # ThucTap
-Thực tập tại vmo
+Sử dụng Swagger-UI để quản lý APIs và sử dụng Postman để test
 ![image](https://github.com/MIDUC/ThucTap_VMO/assets/85658741/ee6896ee-44db-41e4-9f01-42ddc89205cd)
 ![image](https://github.com/MIDUC/ThucTap_VMO/assets/85658741/d1c72106-2c07-4dcb-80a7-6725e66549e0)
 ![image](https://github.com/MIDUC/ThucTap_VMO/assets/85658741/f0277d3a-3883-4b02-a8e8-48611faa5ec6)
